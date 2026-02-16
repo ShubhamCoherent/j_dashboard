@@ -17,9 +17,7 @@ const DEFAULT_COLORS = [
   '#6ECF9D',
 ];
 
-function renderCustomLabel({ cx, cy, midAngle, innerRadius, outerRadius, percent }: {
-  cx: number; cy: number; midAngle: number; innerRadius: number; outerRadius: number; percent: number;
-}) {
+function renderCustomLabel({ cx, cy, midAngle, innerRadius, outerRadius, percent }: any) {
   const RADIAN = Math.PI / 180;
   const radius = outerRadius + 20;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
@@ -88,7 +86,7 @@ export default function PieChartComponent({ data, title }: PieChartComponentProp
               padding: '8px 12px',
               fontSize: '12px',
             }}
-            formatter={(value: number) => [`${value}%`, 'Value']}
+            formatter={(value) => [`${value}%`, 'Value']}
           />
           <Legend
             verticalAlign="bottom"

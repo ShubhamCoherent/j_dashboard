@@ -95,7 +95,7 @@ export default function HorizontalBarChart({ data, title }: HorizontalBarChartPr
               padding: '8px 12px',
               fontSize: '12px',
             }}
-            formatter={(value: number) => [`${value}%`, 'Value']}
+            formatter={(value) => [`${value}%`, 'Value']}
           />
           <Bar
             dataKey="value"

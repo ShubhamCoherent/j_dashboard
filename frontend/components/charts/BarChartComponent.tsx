@@ -93,7 +93,7 @@ export default function BarChartComponent({ data, title }: BarChartComponentProp
               padding: '8px 12px',
               fontSize: '12px',
             }}
-            formatter={(value: number | undefined) => [`${value ?? 0}%`, 'Value']}
+            formatter={(value) => [`${value}%`, 'Value']}
           />
           <Bar
             dataKey="value"
