@@ -43,7 +43,12 @@ function SidebarNav({
                     isMonthExpanded && 'bg-teal-50/50'
                   )}
                 >
-                  <span className="text-sm font-bold text-gray-800">{month.name}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-bold text-gray-800">{month.name}</span>
+                    <span className="text-[10px] font-semibold text-teal-700 bg-teal-100 px-2 py-0.5 rounded-full">
+                      {month.weeks.length * 2} cities
+                    </span>
+                  </div>
                   <motion.div
                     animate={{ rotate: isMonthExpanded ? 0 : -90 }}
                     transition={{ duration: 0.2 }}
@@ -76,9 +81,16 @@ function SidebarNav({
                                   isWeekExpanded ? 'bg-teal-50 text-teal-800' : 'text-gray-700'
                                 )}
                               >
-                                <span className="text-xs font-semibold">
-                                  Week {week.weekNumber}
-                                </span>
+                                <div className="flex flex-col">
+                                  <span className="text-xs font-semibold">
+                                    Week {week.weekNumber}
+                                  </span>
+                                  {!isWeekExpanded && (
+                                    <span className="text-[10px] text-gray-400 mt-0.5">
+                                      {week.cities.map(c => c.name).join(' & ')}
+                                    </span>
+                                  )}
+                                </div>
                                 <motion.div
                                   animate={{ rotate: isWeekExpanded ? 0 : -90 }}
                                   transition={{ duration: 0.2 }}
@@ -173,6 +185,17 @@ export default function Sidebar({ months, selectedCity, onCitySelect }: SidebarP
   }, [searchQuery, allCities]);
 
   const handleSearchSelect = (city: City) => {
+    // Find which month/week this city belongs to and auto-expand them
+    const match = allCities.find(c => c.city.id === city.id);
+    if (match) {
+      setExpandedMonths(prev =>
+        prev.includes(match.month) ? prev : [...prev, match.month]
+      );
+      const weekKey = `${match.month}-${match.week}`;
+      setExpandedWeeks(prev =>
+        prev.includes(weekKey) ? prev : [...prev, weekKey]
+      );
+    }
     onCitySelect(city);
     setSearchQuery('');
     setIsMobileOpen(false);
@@ -211,18 +234,20 @@ export default function Sidebar({ months, selectedCity, onCitySelect }: SidebarP
   return (
     <>
       {/* Desktop Sidebar */}
-      <motion.aside
-        initial={{ x: -300, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
+      <aside
         className={clsx(
           'hidden md:flex flex-col bg-gray-50 border-r border-gray-200',
-          'h-[calc(100vh-64px)] sticky top-0 shrink-0',
+          'sticky top-0 h-screen overflow-y-auto shrink-0',
           isOpen ? 'w-[280px]' : 'w-[52px]'
         )}
       >
         {isOpen ? (
-          <div className="h-full flex flex-col">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+            className="h-full flex flex-col"
+          >
             {/* Header with collapse button */}
             <div className="px-5 py-4 border-b border-gray-200 bg-white flex items-center justify-between">
               <div>
@@ -296,7 +321,7 @@ export default function Sidebar({ months, selectedCity, onCitySelect }: SidebarP
             </div>
 
             <SidebarNav {...navProps} />
-          </div>
+          </motion.div>
         ) : (
           <div className="flex flex-col items-center pt-4 gap-3">
             <button
@@ -308,7 +333,7 @@ export default function Sidebar({ months, selectedCity, onCitySelect }: SidebarP
             </button>
           </div>
         )}
-      </motion.aside>
+      </aside>
 
       {/* Mobile Toggle Button */}
       <button

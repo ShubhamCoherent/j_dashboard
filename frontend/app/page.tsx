@@ -23,7 +23,7 @@ export default function Home() {
           selectedCity={selectedCity}
           onCitySelect={setSelectedCity}
         />
-        <main className="flex-1 min-w-0 bg-[var(--gray-100)]">
+        <main className="flex-1 min-w-0 overflow-x-hidden bg-[var(--gray-100)]">
           <MainContent
             viewMode={viewMode}
             onViewModeChange={setViewMode}

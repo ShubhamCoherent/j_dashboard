@@ -76,6 +76,41 @@ function generateQuestionData(cityId: string, questionId: number): QuestionData 
         return [50 + v, 35 - Math.floor(v / 2), 15 - Math.ceil(v / 2)];
       }
     },
+    10: {
+      labels: ['Special Occasions Only (Weddings, Anniversaries, etc.)', 'Quarterly', 'Semi-Annually', 'Annually'],
+      getValues: () => {
+        const v = seededRandom(0, 6);
+        return [15 + v, 20 - Math.floor(v / 2), 40, 25 - Math.ceil(v / 2)];
+      }
+    },
+    11: {
+      labels: ['Very Important', 'Somewhat Important', 'Not Important at All'],
+      getValues: () => {
+        const v = seededRandom(0, 8);
+        return [50 + v, 40 - Math.floor(v / 2), 10 - Math.ceil(v / 2)];
+      }
+    },
+    12: {
+      labels: ['Yes, always', 'Sometimes, depending on the occasion', 'No, I prefer standard designs'],
+      getValues: () => {
+        const v = seededRandom(0, 8);
+        return [35 + v, 40 - Math.floor(v / 2), 25 - Math.ceil(v / 2)];
+      }
+    },
+    13: {
+      labels: ['Weddings', 'Anniversaries', 'Festivals (Diwali, Christmas, etc.)', 'Personal Milestones (e.g., promotion, achievement)'],
+      getValues: () => {
+        const v = seededRandom(0, 8);
+        return [50 + v, 30 - Math.floor(v / 2), 10, 10 - Math.ceil(v / 2)];
+      }
+    },
+    14: {
+      labels: ['Very important', 'Somewhat important', 'Not important'],
+      getValues: () => {
+        const v = seededRandom(0, 8);
+        return [55 + v, 35 - Math.floor(v / 2), 10 - Math.ceil(v / 2)];
+      }
+    },
   };
 
   const template = dataTemplates[questionId];
@@ -145,6 +180,31 @@ function generateKeyTakeaways(questionId: number, labels: string[], values: numb
       `Moderate Impact (${v[1]}%): Social media somewhat impacts decisions, mainly through brand awareness and promotions. A broader marketing strategy with personalized offers should be used for this group.`,
       `Low Impact (${v[2]}%): Social media has little effect on decisions. This group values factors like brand reputation, price, and product features, so brands should focus on design, quality, and pricing for these consumers.`,
     ],
+    10: (l, v) => [
+      `${v[2]}% of consumers buy jewelry semi-annually, showing a preference for regular but not overly frequent purchases.`,
+      `${v[3]}% purchase jewelry annually, indicating more occasional spending.`,
+      `${v[1]}% purchase quarterly, and ${v[0]}% only for special occasions like weddings or anniversaries.`,
+    ],
+    11: (l, v) => [
+      `${v[0]}% of consumers rate design as very important, making it the most influential factor in jewelry purchases.`,
+      `${v[1]}% consider design to be somewhat important, reflecting that it plays a role but isn't the only factor.`,
+      `${v[2]}% feel that design is not important in their decision-making process.`,
+    ],
+    12: (l, v) => [
+      `${v[1]}% of consumers prefer customization sometimes, depending on the occasion, showing flexibility in their preferences.`,
+      `${v[0]}% always prefer customized designs, especially for special occasions.`,
+      `${v[2]}% prefer standard designs, indicating a market for both custom and traditional options.`,
+    ],
+    13: (l, v) => [
+      `${v[0]}% of consumers purchase jewelry for weddings, making it the dominant occasion for high-value jewelry.`,
+      `${v[1]}% purchase for anniversaries, highlighting the role of personal milestones.`,
+      `${v[2]}% purchase for festivals, while another ${v[3]}% purchase for personal achievements like promotions.`,
+    ],
+    14: (l, v) => [
+      `${v[0]}% of consumers consider certification very important, indicating a strong demand for authenticity and trust.`,
+      `${v[1]}% find certification somewhat important, suggesting that it is a secondary consideration.`,
+      `${v[2]}% do not see certification as a priority, pointing to a smaller segment that may focus more on design or price.`,
+    ],
   };
 
   return takeawayTemplates[questionId](labels, values);
@@ -161,6 +221,11 @@ function generateInsights(questionId: number, labels: string[], values: number[]
     7: `Social media platforms, particularly Instagram and Facebook, dominate as research and shopping tools, trusted by ${values[0]}% of consumers. This digital-first behavior requires brands to maintain strong social media presence, invest in influencer marketing, and create shareable, visually appealing content.`,
     8: `Consumer brand loyalty remains strong, with ${values[0]}% preferring established brands. However, the ${values[1]}% openness to new brands suggests opportunities for emerging players who can differentiate through unique designs, competitive pricing, or superior customer experience.`,
     9: `Social media significantly impacts jewelry purchasing decisions for ${values[0]}% of consumers. This digital influence requires brands to integrate social commerce strategies, leverage user-generated content, and maintain active engagement with their online communities to drive purchase decisions.`,
+    10: `Purchase frequency analysis reveals that ${values[2]}% of consumers buy jewelry semi-annually, representing the largest segment. Annual buyers at ${values[3]}% and quarterly buyers at ${values[1]}% indicate varied purchasing patterns. The ${values[0]}% who buy only for special occasions suggest targeted event-based marketing can capture this segment effectively.`,
+    11: `Design is the most critical factor in jewelry purchase decisions, with ${values[0]}% rating it as very important. Combined with the ${values[1]}% who find it somewhat important, design influences over ${values[0] + values[1]}% of all purchase decisions. Brands should prioritize innovative, aesthetically appealing designs and invest in design-led marketing to capture consumer attention.`,
+    12: `Customization preferences show a mixed market: ${values[1]}% prefer customization sometimes depending on the occasion, while ${values[0]}% always want personalized options. The ${values[2]}% who prefer standard designs indicate that brands should offer both customizable and ready-made collections to cater to diverse preferences.`,
+    13: `Weddings dominate jewelry purchase occasions at ${values[0]}%, confirming the bridal segment as the primary market driver. Anniversaries account for ${values[1]}%, while festivals and personal milestones contribute ${values[2]}% and ${values[3]}% respectively. Brands should align their collections and campaigns with these key occasions throughout the year.`,
+    14: `Certification plays a significant role in purchase decisions, with ${values[0]}% of consumers considering it very important. This highlights the growing consumer awareness about authenticity and quality standards like BIS hallmark. Brands that prominently display certifications and educate consumers about quality standards can build stronger trust and competitive advantage.`,
   };
 
   return insightTemplates[questionId];
@@ -248,7 +313,7 @@ export const surveyData: SurveyData = {
       city,
       month: monthName,
       week: weekIndex + 1,
-      questions: [1, 2, 3, 4, 5, 6, 7, 8, 9].map(qId => generateQuestionData(city.id, qId)),
+      questions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(qId => generateQuestionData(city.id, qId)),
     };
 
     return acc;

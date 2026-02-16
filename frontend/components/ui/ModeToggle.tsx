@@ -12,11 +12,11 @@ interface ModeToggleProps {
 
 export default function ModeToggle({ mode, onModeChange }: ModeToggleProps) {
   return (
-    <div className="bg-white border border-[var(--border)] rounded-xl p-1.5 inline-flex gap-1.5 shadow-sm">
+    <div className="bg-white border border-[var(--border)] rounded-xl p-1 sm:p-1.5 inline-flex gap-1 sm:gap-1.5 shadow-sm">
       <button
         onClick={() => onModeChange('questions')}
         className={clsx(
-          'relative px-4 py-2.5 rounded-lg text-sm font-medium transition-all flex items-center gap-2',
+          'relative px-2.5 py-2 sm:px-4 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-1.5 sm:gap-2',
           mode === 'questions'
             ? 'text-white'
             : 'text-[var(--gray-700)] hover:text-[var(--primary)] hover:bg-[var(--gray-50)]'
@@ -30,13 +30,13 @@ export default function ModeToggle({ mode, onModeChange }: ModeToggleProps) {
           />
         )}
         <BarChart3 className="w-4 h-4 relative z-10" />
-        <span className="relative z-10">Questions Asked</span>
+        <span className="relative z-10">Questions</span>
       </button>
 
       <button
         onClick={() => onModeChange('insights')}
         className={clsx(
-          'relative px-4 py-2.5 rounded-lg text-sm font-medium transition-all flex items-center gap-2',
+          'relative px-2.5 py-2 sm:px-4 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-1.5 sm:gap-2',
           mode === 'insights'
             ? 'text-white'
             : 'text-[var(--gray-700)] hover:text-[var(--accent)] hover:bg-[var(--gray-50)]'
@@ -50,7 +50,7 @@ export default function ModeToggle({ mode, onModeChange }: ModeToggleProps) {
           />
         )}
         <Lightbulb className="w-4 h-4 relative z-10" />
-        <span className="relative z-10">Key Insights</span>
+        <span className="relative z-10">Insights</span>
       </button>
     </div>
   );

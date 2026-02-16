@@ -54,4 +54,29 @@ export const QUESTIONS: QuestionDefinition[] = [
     questionText: 'How Much Does Social Media (E.G., Instagram, Facebook) Impact Your Purchasing Decisions When It Comes To Jewelry?',
     chartType: 'pie',
   },
+  {
+    questionId: 10,
+    questionText: 'How Often Do You Purchase Jewelry For Yourself Or As Gifts?',
+    chartType: 'horizontalBar',
+  },
+  {
+    questionId: 11,
+    questionText: 'How Important Is The Design Of Jewelry In Your Purchase Decision?',
+    chartType: 'bar',
+  },
+  {
+    questionId: 12,
+    questionText: 'When Purchasing Jewelry, Do You Prefer Customization Options Such As Personalized Engravings Or Custom Designs?',
+    chartType: 'horizontalBar',
+  },
+  {
+    questionId: 13,
+    questionText: 'Which Type Of Jewelry Occasion Do You Purchase The Most For?',
+    chartType: 'pie',
+  },
+  {
+    questionId: 14,
+    questionText: 'When Choosing Jewelry, How Important Is The Certification (E.G., BIS Hallmark, Authenticity Certificate)?',
+    chartType: 'horizontalBar',
+  },
 ];

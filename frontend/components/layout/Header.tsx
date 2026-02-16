@@ -1,57 +1,54 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Gem, TrendingUp, Calendar, Percent, BarChart3 } from 'lucide-react';
-
+import { TrendingUp, Calendar, Percent, BarChart3 } from 'lucide-react';
 export default function Header() {
   return (
     <div className="bg-white border-b border-gray-200 shadow-sm">
       {/* Logo and Title Section */}
-      <div className="px-6 py-4 border-b border-gray-100">
-        <div className="flex items-center justify-between">
+      <div className="px-4 sm:px-6 py-3 sm:py-4 border-b border-gray-100">
+        <div className="flex items-center justify-between gap-3">
           {/* Logo */}
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-[#2D9596] to-[#40B5AD]">
-              <Gem className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <div className="text-xs text-gray-700 font-bold tracking-wide">COHERENT</div>
-              <div className="text-[10px] text-gray-400 tracking-wider">MARKET INSIGHTS</div>
-            </div>
+          <div className="shrink-0">
+            <img
+              src="/logo.png"
+              alt="Coherent Market Insights"
+              className="h-8 sm:h-10 w-auto"
+            />
           </div>
 
           {/* Center Title */}
-          <div className="text-center">
-            <h1 className="text-xl font-bold text-gray-900">Coherent Dashboard</h1>
-            <p className="text-xs text-gray-500 mt-0.5">Global Jewelry Market Consumer Behavior Survey</p>
+          <div className="text-center min-w-0 flex-1">
+            <h1 className="text-sm sm:text-xl font-bold text-gray-900 truncate">Coherent Dashboard</h1>
+            <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5 truncate">Global Jewelry Market Consumer Behavior Survey</p>
           </div>
 
-          {/* Right spacer */}
-          <div className="w-32"></div>
+          {/* Right spacer - hidden on mobile */}
+          <div className="hidden sm:block w-32 shrink-0"></div>
         </div>
       </div>
 
       {/* Stats Cards Section */}
-      <div className="px-6 py-5">
-        <div className="text-xs font-semibold text-gray-500 mb-4 tracking-wide">
+      <div className="px-4 sm:px-6 py-4 sm:py-5">
+        <div className="text-[10px] sm:text-xs font-semibold text-gray-500 mb-3 sm:mb-4 tracking-wide">
           Survey Overview | Consumer Behavior Analysis - India 2025
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4">
           {/* Survey Duration */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="bg-white border border-gray-200 rounded-lg px-4 py-3.5 shadow-sm hover:shadow-md transition-shadow"
+            className="bg-white border border-gray-200 rounded-lg px-3 py-2.5 sm:px-4 sm:py-3.5 shadow-sm hover:shadow-md transition-shadow"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center shrink-0">
-                <Calendar className="w-5 h-5 text-blue-600" />
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-blue-50 flex items-center justify-center shrink-0">
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
               </div>
               <div>
-                <div className="text-[10px] text-gray-500 font-semibold tracking-wide">SURVEY DURATION</div>
-                <div className="text-lg font-bold text-gray-900">3 Months</div>
+                <div className="text-[9px] sm:text-[10px] text-gray-500 font-semibold tracking-wide">SURVEY DURATION</div>
+                <div className="text-sm sm:text-lg font-bold text-gray-900">3 Months</div>
               </div>
             </div>
           </motion.div>
@@ -61,15 +58,15 @@ export default function Header() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-white border border-gray-200 rounded-lg px-4 py-3.5 shadow-sm hover:shadow-md transition-shadow"
+            className="bg-white border border-gray-200 rounded-lg px-3 py-2.5 sm:px-4 sm:py-3.5 shadow-sm hover:shadow-md transition-shadow"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-green-50 flex items-center justify-center shrink-0">
-                <BarChart3 className="w-5 h-5 text-green-600" />
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-green-50 flex items-center justify-center shrink-0">
+                <BarChart3 className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" />
               </div>
               <div>
-                <div className="text-[10px] text-gray-500 font-semibold tracking-wide">TOTAL CITIES</div>
-                <div className="text-lg font-bold text-gray-900">24 Cities</div>
+                <div className="text-[9px] sm:text-[10px] text-gray-500 font-semibold tracking-wide">TOTAL CITIES</div>
+                <div className="text-sm sm:text-lg font-bold text-gray-900">24 Cities</div>
               </div>
             </div>
           </motion.div>
@@ -79,15 +76,15 @@ export default function Header() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="bg-white border border-gray-200 rounded-lg px-4 py-3.5 shadow-sm hover:shadow-md transition-shadow"
+            className="bg-white border border-gray-200 rounded-lg px-3 py-2.5 sm:px-4 sm:py-3.5 shadow-sm hover:shadow-md transition-shadow"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center shrink-0">
-                <TrendingUp className="w-5 h-5 text-purple-600" />
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-purple-50 flex items-center justify-center shrink-0">
+                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600" />
               </div>
               <div>
-                <div className="text-[10px] text-gray-500 font-semibold tracking-wide">AVG RESPONSE RATE</div>
-                <div className="text-lg font-bold text-gray-900">85.5%</div>
+                <div className="text-[9px] sm:text-[10px] text-gray-500 font-semibold tracking-wide">AVG RESPONSE RATE</div>
+                <div className="text-sm sm:text-lg font-bold text-gray-900">85.5%</div>
               </div>
             </div>
           </motion.div>
@@ -97,22 +94,22 @@ export default function Header() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="bg-white border border-gray-200 rounded-lg px-4 py-3.5 shadow-sm hover:shadow-md transition-shadow"
+            className="bg-white border border-gray-200 rounded-lg px-3 py-2.5 sm:px-4 sm:py-3.5 shadow-sm hover:shadow-md transition-shadow"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center shrink-0">
-                <Percent className="w-5 h-5 text-orange-600" />
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-orange-50 flex items-center justify-center shrink-0">
+                <Percent className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600" />
               </div>
               <div>
-                <div className="text-[10px] text-gray-500 font-semibold tracking-wide">TOTAL QUESTIONS</div>
-                <div className="text-lg font-bold text-gray-900">9 Questions</div>
+                <div className="text-[9px] sm:text-[10px] text-gray-500 font-semibold tracking-wide">TOTAL QUESTIONS</div>
+                <div className="text-sm sm:text-lg font-bold text-gray-900">14 Questions</div>
               </div>
             </div>
           </motion.div>
         </div>
 
         {/* Warning Note */}
-        <div className="mt-4 bg-amber-50 border border-amber-200 rounded-lg px-4 py-2.5 flex items-center gap-3">
+        <div className="mt-3 sm:mt-4 bg-amber-50 border border-amber-200 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 flex items-start sm:items-center gap-2 sm:gap-3">
           <div className="text-amber-600 shrink-0">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />

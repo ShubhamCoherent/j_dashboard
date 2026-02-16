@@ -61,7 +61,7 @@ export default function BarChartComponent({ data, title }: BarChartComponentProp
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.4 }}
-      className="w-full h-[380px] bg-white rounded-xl p-5 border border-gray-200 shadow-sm"
+      className="w-full h-[280px] sm:h-[380px] bg-white rounded-xl p-3 sm:p-5 border border-gray-200 shadow-sm"
     >
       {title && (
         <h3 className="text-sm font-semibold text-gray-800 mb-4">{title}</h3>
