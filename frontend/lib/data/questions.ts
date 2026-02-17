@@ -56,7 +56,7 @@ export const QUESTIONS: QuestionDefinition[] = [
   },
   {
     questionId: 10,
-    questionText: 'How Often Do You Purchase Jewelry For Yourself Or As Gifts?',
+    questionText: 'How Often Do You Purchase Jewelry For Yourself?',
     chartType: 'horizontalBar',
   },
   {
@@ -71,7 +71,7 @@ export const QUESTIONS: QuestionDefinition[] = [
   },
   {
     questionId: 13,
-    questionText: 'Which Type Of Jewelry Occasion Do You Purchase The Most For?',
+    questionText: 'Which Type Of Occasion Do You Purchase The Jewelry Most For?',
     chartType: 'pie',
   },
   {

@@ -31,7 +31,7 @@ export default function Header() {
       {/* Stats Cards Section */}
       <div className="px-4 sm:px-6 py-4 sm:py-5">
         <div className="text-[10px] sm:text-xs font-semibold text-gray-500 mb-3 sm:mb-4 tracking-wide">
-          Survey Overview | Consumer Behavior Analysis - India 2025
+          Survey Overview | Consumer Behavior Analysis - India 2026
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4">
@@ -118,7 +118,7 @@ export default function Header() {
           <div>
             <span className="font-bold text-amber-900 text-xs">Note:</span>
             <span className="text-amber-800 text-xs ml-1.5">
-              All the data in this dashboard is demo data. No Real-world data is related to this.
+              The interview questions will be updated weekly based on the objectives shared by the Indriya team. The current city-wise plan/questions are for demonstration purposes only. Final weekly objectives, city coverage, and focus themes will be aligned with business priorities as shared on a weekly basis.
             </span>
           </div>
         </div>

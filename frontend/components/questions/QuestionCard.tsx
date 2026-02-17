@@ -22,7 +22,7 @@ const chartOptions: { type: ChartType; label: string; icon: typeof PieChart }[] 
   { type: 'horizontalBar', label: 'H-Bar Chart', icon: BarChartHorizontal },
 ];
 
-export default function QuestionCard({ question, isExpanded, onToggle, totalQuestions = 9 }: QuestionCardProps) {
+export default function QuestionCard({ question, isExpanded, onToggle, totalQuestions = 14 }: QuestionCardProps) {
   const [activeChart, setActiveChart] = useState<ChartType>(question.chartType);
 
   const renderChart = (type: ChartType) => {
